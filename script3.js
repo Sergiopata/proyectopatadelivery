@@ -33,6 +33,10 @@ function Producto (nombreValor, stockValor, precioValor){
     this.nombre = nombreValor;
     this.stock = stockValor;
     this.precio = precioValor;
+    this.venta = function (cantidadCompra){
+        this.stock -= cantidadCompra;
+        alert("se vendieron: " + cantidadCompra + " unidades");
+    }
 }
 const productoB = new Producto("710", 1000, 140);
 const productoC = new Producto("Litro", 1000, 160);
