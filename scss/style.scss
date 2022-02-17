@@ -1,0 +1,350 @@
+//variables
+$font-general: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+// $color-primario: rgba(255, 255, 255, 0.678);
+$color-primario: #fff;
+$color-secundario: #df4204;
+
+//Mapas
+$colores: (
+    "primario": $color-primario,
+    "secundario": $color-secundario,
+    "facebook": grey,
+    "wattsap": green,
+    "instagram": orange,
+);
+
+@each $valor, $color in $colores {
+    .bg--#{$valor} {
+        background-color: $color;
+    }
+}
+
+//Mixin
+@mixin theme($theme: DarkGray) {
+    background: $theme;
+    box-shadow: 0 0 1px rgba($theme, 0.25);
+    color: $color-primario;
+}
+
+.info {
+    @include theme;
+}
+.alert {
+    @include theme($theme: DarkRed);
+}
+.success {
+    @include theme($theme: DarkGreen);
+}
+
+@mixin gradient {
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 31%,
+        rgba(223, 66, 4, 1) 100%,
+        rgba(255, 146, 2, 1) 100%
+    );
+}
+
+.white {
+    color: white;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.logo {
+    height: 50px;
+}
+.bg-orange {
+    background-color: map-get($colores, "secundario");
+}
+/* color en los select option*/
+#botellas {
+    background-color: lemonchiffon;
+    border-color: black;
+    font-family: serif;
+}
+/* imagen motito delivery */
+.deliveryInicio img {
+    width: 300px;
+    justify-content: flex-end;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: darkorange;
+}
+button {
+    background-color: lemonchiffon;
+}
+
+input {
+    background-color: map-get($colores, "primario");
+}
+h1,
+h2,
+h3 {
+    @extend .white;
+    display: inline;
+}
+//Footers-logos-parrafos footer
+footer {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    background-color: rgb(233, 101, 14);
+    a img {
+        width: 40px;
+    }
+    div p {
+        font-size: 8px;
+        display: grid;
+        justify-items: center;
+        margin: auto;
+    }
+    .iconos {
+        display: contents;
+    }
+}
+//productos
+.productosMain {
+    @include gradient();
+
+    &__imagenes p {
+        font-weight: 800;
+        color: $color-primario;
+        align-content: center;
+    }
+}
+//img carousel
+.carousel-inner {
+    .carousel-item {
+        img {
+            width: 100%;
+            height: 80vh;
+            object-fit: cover;
+        }
+    }
+}
+//home
+.inicioMain {
+    @include gradient();
+    height: 100%;
+    background-size: cover;
+    position: relative;
+    overflow-x: hidden;
+
+    .video {
+        width: 90%;
+        margin: 0 auto;
+
+        iframe {
+            width: 80%;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+}
+/* estilos CONTACTO */
+.contacto {
+    @include gradient();
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__titulo {
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        max-width: 300px;
+    }
+    &__formText {
+        margin-bottom: 10px;
+        color: $color-primario;
+    }
+    input {
+        margin-bottom: 30px;
+    }
+}
+
+/* estilos FOTOS  */
+
+.latas {
+    margin-bottom: 20px;
+    &__imagenes {
+        @media (min-width: 1025px) {
+            width: 76%;
+            margin: 0 auto;
+        }
+
+        img {
+            width: 300px;
+            border-radius: 25px;
+            margin: 10px;
+            padding: 15px;
+        }
+    }
+    &__descripcion {
+        font-family: $font-general;
+        color: map-get($colores, "primario");
+        text-align: center;
+    }
+}
+
+.latas2 {
+    margin-bottom: 20px;
+    &__imagenes {
+        @media (min-width: 1025px) {
+            width: 76%;
+            margin: 0 auto;
+        }
+        img {
+            width: 300px;
+            border-radius: 25px;
+            margin: 10px;
+            padding: 15px;
+        }
+    }
+
+    &__descripcion {
+        font-family: $font-general;
+        color: $color-primario;
+        text-align: center;
+    }
+}
+//fotos
+.fotosGaleria {
+    @include gradient();
+    width: 100%;
+    display: grid;
+    // grid-template-columns: 3, 1fr;
+    overflow-x: hidden;
+
+    &__fotos {
+        text-align: center;
+        margin: 0 auto;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+/* titulo de index */
+.textInicio {
+    text-align: center;
+    color: rgb(113, 126, 39);
+    display: block;
+    font-variant: small-caps;
+}
+//Novedades
+.newMain {
+    @include gradient();
+    display: grid;
+
+    &__titulo {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        max-width: 300px;
+    }
+    img {
+        width: 250px;
+        margin: auto;
+        // margin-left: 20px;
+        margin-top: 20px;
+        // margin-bottom: 20px;
+        border-style: solid;
+        border-radius: 25px;
+        color: rgb(223, 110, 17);
+    }
+    p {
+        color: #000(255, 136, 0);
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        font-family: $font-general;
+    }
+}
+.card {
+    width: 90%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+.section_animation {
+    max-width: 100%;
+}
+/* animacion Delivery Home */
+
+#tapita {
+    width: 30%;
+    max-width: 250px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-image: url(../assets/img/deliveryman.png);
+    background-size: contain;
+    animation-name: miAnimacion;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    position: relative;
+    animation-direction: inherit;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+@keyframes miAnimacion {
+    0% {
+        background-image: url(../assets/img/deliveryman.png);
+        left: 0;
+        top: 0px;
+    }
+    25% {
+        background-image: url(../assets/img/deliveryman.png);
+        left: 800px;
+        top: 0px;
+    }
+    50% {
+        background-image: url(../assets/img/deliveryman.png);
+        left: 0px;
+        top: 0px;
+    }
+    75% {
+        background-image: url(../assets/img/deliveryman.png);
+        left: 0px;
+        top: 0px;
+    }
+    100% {
+        background-image: url(../assets/img/deliveryman.png);
+        left: 0px;
+        top: 0px;
+    }
+}
+
+@media (max-width: 500px) {
+    @keyframes miAnimacion {
+        0% {
+            background-image: url(../assets/img/deliveryman.png);
+            left: 0;
+            top: 0px;
+        }
+        25% {
+            background-image: url(../assets/img/deliveryman.png);
+            left: 0px;
+            top: 0px;
+        }
+        50% {
+            background-image: url(../assets/img/deliveryman.png);
+            left: 0px;
+            top: 0px;
+        }
+        75% {
+            background-image: url(../assets/img/deliveryman.png);
+            left: 180px;
+            top: 0px;
+        }
+        100% {
+            background-image: url(../assets/img/deliveryman.png);
+            left: 0px;
+            top: 0px;
+        }
+    }
+}

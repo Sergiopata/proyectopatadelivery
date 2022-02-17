@@ -1,0 +1,26 @@
+{
+  "name": "proyecto_delivery",
+  "version": "1.0.0",
+  "description": "app echa para peñon del Aguila",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1" ,
+    "build-css": "node-sass --include-path scss scss/style.scss css/style.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+    
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sergiopata/proyecto_delivery.git"
+  },
+  "keywords": [
+    "Aguila"
+  ],
+  "author": "Sergio Spatacino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sergiopata/proyecto_delivery/issues"
+  },
+  "homepage": "https://github.com/Sergiopata/proyecto_delivery#readme"
+}
