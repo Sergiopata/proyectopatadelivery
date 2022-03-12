@@ -271,11 +271,22 @@ footer .iconos {
   font-variant: small-caps;
 }
 
+#navbarNav .cart-icon {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60px;
+}
+
 .newMain {
   background: -webkit-gradient(linear, left top, right top, color-stop(31%, black), color-stop(100%, #df4204), to(#ff9202));
   background: linear-gradient(90deg, black 31%, #df4204 100%, #ff9202 100%);
-  display: -ms-grid;
-  display: grid;
 }
 
 .newMain__titulo {
@@ -283,6 +294,23 @@ footer .iconos {
   margin: 0 auto;
   display: block;
   max-width: 300px;
+}
+
+.newMain__search {
+  width: 60%;
+  padding: 6px;
+  margin: 0 auto;
+}
+
+.newMain .bebidas {
+  margin: 1rem auto;
+  display: -ms-grid;
+  display: grid;
+  max-width: 1200px;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1rem;
+  grid-auto-rows: minmax(100px, auto);
 }
 
 .newMain img {
@@ -304,7 +332,7 @@ footer .iconos {
 
 .card {
   width: 90%;
-  max-width: 320px;
+  /*  max-width: 300px; */
   margin: 0 auto;
 }
 
