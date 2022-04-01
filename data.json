@@ -1,0 +1,47 @@
+[
+  {
+    "nombre": "pack 6 surtidas",
+    "stock" :100,
+    "precio":1380,
+    "categoria":"regalo",
+    "id":1,
+    "img":"../assets/img/pack6.png",
+    "descripcion":"Gift Pack con 6 latas degustación (Mexican Lager, Oktoberfest, Schwarzbier, IPA Beta, Waldbier, Maracuyá Sour) Gift Pack 6 latas x 473 ml."
+
+
+  },
+  {
+    "nombre": "Isabella Italian",
+    "stock" :100,
+    "precio":250,
+    "categoria": "nuevo",
+    "id": 2,
+    "img":"../assets/img/Isabella.jpg",
+    "descripcion":"Esta vez, realizamos catas, visitamos viñedos e hicimos degustaciones. De esta expedición nació Isabella Italian Grape Ale, nuestra nueva creación que combina la cerveza con el vino."
+
+
+  },
+  {
+    "nombre":  "Isabella Sour",
+    "stock" : 100,
+    "precio": 250,
+    "categoria":"nuevo",
+    "id":3,
+    "img":"../assets/img/isabellaSour.jpeg",
+    "descripcion":"La nueva Cerveza ácida de Peñön con jugo de uva Frambua (Uva típica de Córdoba). Es una cerveza , refrescante y delicada, de color rosado y 4% de alcohol, con el perfil frutado característico de esta uva que aporta notas a ciruela y frutos tropicales. "
+
+
+  },
+  {
+    "nombre": "Kit 3 latas 2 copas",
+    "stock" :100,
+    "precio":1550,
+    "categoria":"regalo",
+    "id": 4,
+    "img":"../assets/img/kit-.png",
+    "descripcion":"1 - Caja de Regalo. Material: Cartón. Color: Negro 2 - Moño. Color: Gris o Blanco. Otro color: ¡Pedir SIN CARGO! 3 - Viruta de papel. 4 - Tarjeta 'Un brindis en tu honor' o 'Un brindis por más amor'. ELEGÌ MOTIVO: 'Felicidades', 'Feliz Cumpleaños', 'Feliz Día', 'Gracias', 'Felicitaciones', 'Éxitos', 'Aniversario' o 'Te amo'. 5 - Tarjeta 'De:/Para:', vacía para completar."
+
+
+  }
+
+]

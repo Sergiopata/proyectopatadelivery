@@ -12,7 +12,31 @@ class Producto {
     }
     
 }
-const producto1 = new Producto(
+//agregando fetch
+fetch("../data.json")
+        .then(response => response.json())
+        .then(data =>{
+          data.forEach(producto =>
+            listaProductos.push(
+              new Producto(
+                producto.nombre,
+                producto.stock,
+                producto.precio,
+                producto.categoria,
+                producto.id,
+                producto.img,
+                producto.descripcion
+
+              )
+            )
+          );
+          mostrarProductos();
+          console.log(listaProductos);
+
+        })
+
+//comentando mis productos, pues uso fetch ahora
+/* const producto1 = new Producto(
     "pack 6 surtidas",
     100,
     1380,
@@ -47,10 +71,10 @@ const producto4 = new Producto(
     4,
     "../assets/img/kit-.png",
     "1 - Caja de Regalo. Material: Cartón. Color: Negro 2 - Moño. Color: Gris o Blanco. Otro color: ¡Pedir SIN CARGO! 3 - Viruta de papel. 4 - Tarjeta 'Un brindis en tu honor' o 'Un brindis por más amor'. ELEGÌ MOTIVO: 'Felicidades', 'Feliz Cumpleaños', 'Feliz Día', 'Gracias', 'Felicitaciones', 'Éxitos', 'Aniversario' o 'Te amo'. 5 - Tarjeta 'De:/Para:', vacía para completar."
-);
+); */
 
 //array
-const listaProductos = [producto1, producto2, producto3, producto4];
+const listaProductos = [];
 
 
 let carrito = [];
@@ -97,6 +121,7 @@ const mostrarProductos = () => {
           imageAlt: 'Custom image',
         
         })
+
         agregarAlCarrito(cardPadre);
         
       })
