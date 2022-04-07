@@ -1,4 +1,16 @@
-/* let newDiv = document.getElementsByClassName ("newDiv"); */
+let contenidoCarrito = document.querySelector(".contenido_carrito");
+
+const divCarrito = document.querySelector(".product-detail");
+
+const btnCarrito = document.querySelector (".navbar-shopping-cart");
+
+document.addEventListener("DOMContentLoaded", ()=>{
+  actualizarContador();
+})
+
+btnCarrito.addEventListener("click",()=>{
+  divCarrito.classList.toggle("active");
+})
 
 class Producto {
     constructor(nombre, stock, precio, categoria, id, img, descripcion) {
@@ -31,53 +43,11 @@ fetch("../data.json")
             )
           );
           mostrarProductos();
-          console.log(listaProductos);
-
+          
         })
-
-//comentando mis productos, pues uso fetch ahora
-/* const producto1 = new Producto(
-    "pack 6 surtidas",
-    100,
-    1380,
-    "regalo",
-    1,
-    "../assets/img/pack6.png",
-    "Gift Pack con 6 latas degustación (Mexican Lager, Oktoberfest, Schwarzbier, IPA Beta, Waldbier, Maracuyá Sour) Gift Pack 6 latas x 473 ml."
-);
-const producto2 = new Producto(
-    "Isabella Italian",
-    100,
-    250,
-    "nuevo",
-    2,
-    "../assets/img/Isabella.jpg",
-    "Esta vez, realizamos catas, visitamos viñedos e hicimos degustaciones. De esta expedición nació Isabella Italian Grape Ale, nuestra nueva creación que combina la cerveza con el vino."
-);
-const producto3 = new Producto(
-    "Isabella Sour",
-    100,
-    250,
-    "nuevo",
-    3,
-    "../assets/img/isabellaSour.jpeg",
-    "La nueva Cerveza ácida de Peñön con jugo de uva Frambua (Uva típica de Córdoba). Es una cerveza , refrescante y delicada, de color rosado y 4% de alcohol, con el perfil frutado característico de esta uva que aporta notas a ciruela y frutos tropicales. "
-);
-const producto4 = new Producto(
-    "Kit 3 latas 2 copas",
-    100,
-    1550,
-    "regalo",
-    4,
-    "../assets/img/kit-.png",
-    "1 - Caja de Regalo. Material: Cartón. Color: Negro 2 - Moño. Color: Gris o Blanco. Otro color: ¡Pedir SIN CARGO! 3 - Viruta de papel. 4 - Tarjeta 'Un brindis en tu honor' o 'Un brindis por más amor'. ELEGÌ MOTIVO: 'Felicidades', 'Feliz Cumpleaños', 'Feliz Día', 'Gracias', 'Felicitaciones', 'Éxitos', 'Aniversario' o 'Te amo'. 5 - Tarjeta 'De:/Para:', vacía para completar."
-); */
-
 //array
 const listaProductos = [];
-
-
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem("carrito"))|| [];
 let contenedor = document.querySelector(".bebidas");
 
 
@@ -106,6 +76,7 @@ const mostrarProductos = () => {
     const btnAgregar = document.querySelectorAll(".btn-agregar");
     btnAgregar.forEach((e)=> e.addEventListener("click", (e)=>{
         let cardPadre = e.target.parentElement;
+        agregarAlCarrito(cardPadre);
         //agregando libreria
         Swal.fire({
           title: 'Producto agregado al carrito, porfavor revisar consola',
@@ -121,17 +92,9 @@ const mostrarProductos = () => {
           imageAlt: 'Custom image',
         
         })
-
-        agregarAlCarrito(cardPadre);
-        
       })
       )
     }
-
-
-
-
-
 
 //agregar productos
 const agregarAlCarrito = (cardPadre)=>{
@@ -154,13 +117,84 @@ const agregarAlCarrito = (cardPadre)=>{
       carrito.push(producto);
       
     }
-    console.log(carrito, "esto es el carrito");
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarCarrito();
+    actualizarContador();
 
   }
 
+function mostrarCarrito (){
+  contenidoCarrito.innerHTML = "";
+
+    carrito.forEach (element => {
+      let {nombre,precio,id,img,cantidad} = element;
+
+      contenidoCarrito.innerHTML += `
+        <div class = "shopping-cart">
+          <figure>
+          <img src="${img}" alt= "${nombre}">
+          </figure>
+          <div>
+          <p>${nombre}</p>
+          <p>cantidad:${cantidad}</p>
+          </div>
+          <p>${precio*cantidad}</p>
+          <button class = "btn-restar" data-id = "${id}">-</button>
+          <button class = "btn-borrar" data-id = "${id}">x</button>
+          
+        </div>
+      
+      `
+    })
+}
+function restarProducto(idProductoRestar){
+  let productoEncontrado = carrito.find(element => element.id === Number (idProductoRestar));
+  console.log(productoEncontrado);
+  if (productoEncontrado) {
+    productoEncontrado.cantidad--;
+  if (productoEncontrado.cantidad < 1){
+    borrarProducto(idProductoRestar);
+  }
+  }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  mostrarCarrito();
+  actualizarContador();
+
+}
+function borrarProducto(idProductoBorrar){
+  carrito = carrito.filter(element => element.id !== Number(idProductoBorrar));
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  mostrarCarrito();
+  actualizarContador();
+
+}
+function actualizarContador(){
+  let carrito = JSON.parse(localStorage.getItem("carrito"));
+  let total = carrito.reduce((acc,ite)=> acc + ite.cantidad, 0);
+  document.querySelector(".navbar-shopping-cart div").textContent = total;
+}
 
 
-  mostrarProductos();
+
+
+const escucharEventosCarrito = () => {
+  divCarrito.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-restar")) {
+      restarProducto(e.target.getAttribute("data-id"));
+    }
+    if (e.target.classList.contains("btn-borrar")) {
+      borrarProducto(e.target.getAttribute("data-id"));
+    }
+  });
+};
+
+
+
+mostrarProductos();
+mostrarCarrito();
+escucharEventosCarrito();
+
 
 
 
