@@ -79,7 +79,7 @@ const mostrarProductos = () => {
         agregarAlCarrito(cardPadre);
         //agregando libreria
         Swal.fire({
-          title: 'Producto agregado al carrito, porfavor revisar consola',
+          title: 'Producto agregado al carrito',
           showClass: {
             popup: 'animate__animated animate__fadeInDown'
           },
